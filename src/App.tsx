@@ -1,26 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import TabSelector from './components/TabSelector/TabSelector';
+import ImagesTab from './components/ImagesTab/ImagesTab';
+import PredictionsTab from './components/PredictionsTab/PredictionsTab';
+import { StateContextProvider } from './contexts/state';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<StateContextProvider>
+			{({ tab }) => (
+				<div className='App'>
+					<h1 className='AppTitle'>Encord Frontend Technical Challenge</h1>
+					<div className='content'>
+						<TabSelector />
+						<div className='tabs'>
+							{tab === 'images' && <ImagesTab />}
+							{tab === 'predictions' && <PredictionsTab />}
+						</div>
+					</div>
+				</div>
+			)}
+		</StateContextProvider>
+	);
 }
 
 export default App;

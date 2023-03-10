@@ -1,0 +1,7 @@
+.ImageUpload {
+	@apply flex items-center justify-between p-4 mt-6 border-dashed border-2 rounded-lg gap-3;
+}
+
+.ImageUpload button {
+	@apply shrink-0;
+}

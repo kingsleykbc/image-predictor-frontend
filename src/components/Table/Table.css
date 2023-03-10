@@ -1,0 +1,15 @@
+.Table {
+	@apply w-full rounded-lg overflow-hidden;
+}
+
+.Table td {
+	@apply border px-4 py-2 first:w-[56%] whitespace-nowrap;
+}
+
+.Table th {
+	@apply bg-gray-800 text-white p-4 text-left;
+}
+
+.TableWrapper {
+	@apply w-full overflow-auto;
+}

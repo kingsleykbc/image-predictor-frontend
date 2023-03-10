@@ -1,0 +1,19 @@
+.PredictImage form {
+	@apply sm:min-w-[350px];
+}
+
+.PredictImage .Buttons {
+	@apply flex justify-center gap-2 mt-4;
+}
+
+.PredictImage button {
+	@apply bg-primary grow;
+}
+
+.PredictImage p {
+	@apply mb-1 font-semibold;
+}
+
+.PredictImage label {
+	@apply pb-4 block;
+}

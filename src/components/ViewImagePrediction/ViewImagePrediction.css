@@ -1,0 +1,7 @@
+.Image {
+	@apply border overflow-auto max-h-[60vh] max-w-[800px];
+}
+
+.CloseButton {
+	@apply w-full max-w-[200px] m-auto block mt-4;
+}

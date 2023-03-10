@@ -1,0 +1,11 @@
+.TabSelector {
+	@apply bg-gray-100 rounded-xl flex gap-4 p-4 mb-6;
+}
+
+.TabSelector button {
+	@apply grow bg-white text-black;
+}
+
+.TabSelector .active {
+	@apply text-white bg-primary;
+}

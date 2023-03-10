@@ -1,0 +1,15 @@
+= Generate project
+= Setup tailwind
+= Basic Layout
+= Images Tab
+  - Add uploading images to memory
+  - Add Image Table
+  - Add predict dialog box
+
+
+= Prediction tab
+  - Add prediction table
+  - Add image view dialog (that overflows)
+  - Implement the overlay
+
+= Style the app
