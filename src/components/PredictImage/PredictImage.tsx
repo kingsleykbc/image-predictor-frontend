@@ -15,8 +15,9 @@ const PredictImage = ({ imageName }: PredictImageProps) => {
 	const toggleDialog = () => setShowDialog(show => !show);
 	const titleRef: any = useRef();
 	const descriptionRef: any = useRef();
-	const { setPredictionFile, setTab } = useStateContext();
+	const { setTab } = useStateContext();
 
+	// Fetch and store prediction locally
 	const handleSubmit: FormEventHandler<HTMLFormElement> = async e => {
 		e.preventDefault();
 		setError(null);
@@ -29,7 +30,6 @@ const PredictImage = ({ imageName }: PredictImageProps) => {
 				timeStamp: Date.now(),
 				predictions
 			});
-			setPredictionFile(imageName);
 			setTab('predictions');
 			toggleDialog();
 		} catch (e: any) {
@@ -51,7 +51,7 @@ const PredictImage = ({ imageName }: PredictImageProps) => {
 						<p>Description</p>
 						<input ref={descriptionRef} type='text' required />
 					</label>
-					{error && <h5>{error}</h5>}
+					{error && <h5 role='alert'>{error}</h5>}
 					<div className='Buttons'>
 						<button type='submit'>Submit</button>
 						<button onClick={toggleDialog} type='button'>

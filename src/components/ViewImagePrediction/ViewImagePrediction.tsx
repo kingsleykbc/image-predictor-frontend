@@ -14,12 +14,16 @@ const ViewImagePrediction = ({ imageName, predictions }: ViewImagePredictionProp
 	const [showDialog, setShowDialog] = useState(false);
 	const toggleDialog = () => setShowDialog(show => !show);
 	const imageBase64 = getImage(imageName)?.base64;
+
+	if (!imageBase64) return null;
 	return (
 		<div className='ViewImagePrediction'>
 			<button onClick={toggleDialog}>View</button>
 
 			<DialogBox show={showDialog} toggle={toggleDialog}>
-				<div className='Image'>{imageBase64 && <ImageWithSquares predictions={predictions.predictions} imageUrl={imageBase64} />}</div>
+				<div className='Image'>
+					<ImageWithSquares predictions={predictions.predictions} imageUrl={imageBase64} />
+				</div>
 				<button className='CloseButton' onClick={toggleDialog}>
 					Close
 				</button>

@@ -13,3 +13,7 @@ body {
 input {
 	@apply border border-2 border-gray-200 rounded-lg p-2 text-base w-full;
 }
+
+h5 {
+	@apply text-red-500 font-bold whitespace-pre-wrap text-center bg-red-100 p-4 rounded-lg text-sm;
+}

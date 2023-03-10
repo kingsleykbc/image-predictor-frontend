@@ -10,6 +10,7 @@ interface ImageWithSquaresProps {
 const ImageWithSquares = ({ imageUrl, predictions }: ImageWithSquaresProps) => {
 	const canvasRef = useRef<HTMLCanvasElement>(null);
 
+	// Generate Image and predictions
 	useEffect(() => {
 		const canvas: any = canvasRef.current;
 		const ctx = canvas!.getContext('2d')!;
@@ -37,12 +38,13 @@ const ImageWithSquares = ({ imageUrl, predictions }: ImageWithSquaresProps) => {
 				ctx.lineWidth = 2;
 				ctx.stroke();
 
-				// Add Label
+				// Draw Label
 				ctx.font = '1.5rem Arial';
 				ctx.fillStyle = '#252869';
 				const text = label ?? '';
 				const textWidth = ctx.measureText(text).width;
-				ctx.fillText(text, x + width - textWidth - 25, y + height - 25);
+				const padding = 25;
+				ctx.fillText(text, x + width - textWidth - padding, y + height - padding);
 			});
 		};
 		image.src = imageUrl;

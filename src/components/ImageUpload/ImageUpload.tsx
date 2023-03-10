@@ -14,6 +14,7 @@ function ImageUpload({ onImageAdded }: ImageUploadProps) {
 		setFile(event.target.files![0]);
 	};
 
+	// Convert image to base64 blob
 	const getBase64 = async (file: File) => {
 		return new Promise((resolve, reject) => {
 			const reader = new FileReader();
@@ -23,31 +24,24 @@ function ImageUpload({ onImageAdded }: ImageUploadProps) {
 		});
 	};
 
-	const handleUpload = () => {
-		if (!file) {
-			return;
-		}
-		const reader = new FileReader();
+	// Upload and store image locally
+	const handleUpload = async () => {
+		if (!file) return;
 
-		reader.onload = async function (e: any) {
-			const timeUploaded = Date.now();
-			const name = `${timeUploaded}_${file.name}`;
-			const files = saveImage({
-				name,
-				timeUploaded,
-				base64: await getBase64(file),
-				size: `${(file.size / 1024).toFixed(2)} KB`
-			});
-
-			onImageAdded(files);
-		};
-
-		reader.readAsArrayBuffer(file);
+		const timeUploaded = Date.now();
+		const name = `${timeUploaded}_${file.name}`;
+		const files = saveImage({
+			name,
+			timeUploaded,
+			base64: await getBase64(file),
+			size: `${(file.size / 1024).toFixed(2)} KB`
+		});
+		onImageAdded(files);
 	};
 
 	return (
 		<div className='ImageUpload'>
-			<input type='file' onChange={handleFileChange} />
+			<input type='file' accept='image/jpeg' onChange={handleFileChange} />
 			<button disabled={!file} onClick={handleUpload}>
 				Upload Image
 			</button>

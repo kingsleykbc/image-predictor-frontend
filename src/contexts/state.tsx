@@ -1,32 +1,26 @@
+/**
+ * GLOBAL STATE
+ */
 import { ReactNode, createContext, useContext, useMemo, useState } from 'react';
 
 export type TabType = 'images' | 'predictions';
-type PredictionFileType = string | null;
-type StateContextType = {
+export type StateContextType = {
 	tab: TabType;
-	predictionFile: PredictionFileType;
 	setTab: (tab: TabType) => void;
-	setPredictionFile: (predictionFile: string) => void;
 };
-interface StateProviderType {
+interface StateProviderProps {
 	children: (data: StateContextType) => ReactNode;
 }
 
-const defaultValues: StateContextType = {
-	tab: 'images',
-	predictionFile: null,
-	setTab: () => {},
-	setPredictionFile: () => {}
-};
+const defaultValues: StateContextType = { tab: 'images', setTab: () => {} };
 
 export const useStateContext = () => useContext(StateContext);
 const StateContext = createContext<StateContextType>(defaultValues);
 
-export const StateContextProvider = ({ children }: StateProviderType) => {
+export const StateContextProvider = ({ children }: StateProviderProps) => {
 	const [tab, setTab] = useState<TabType>(defaultValues.tab);
-	const [predictionFile, setPredictionFile] = useState<string | null>(defaultValues.predictionFile);
 
-	const value = useMemo(() => ({ tab, predictionFile, setTab, setPredictionFile }), [tab, predictionFile]);
+	const value = useMemo(() => ({ tab, setTab }), [tab]);
 	return (
 		<StateContext.Provider value={value}>
 			<StateContext.Consumer>{data => children(data)}</StateContext.Consumer>

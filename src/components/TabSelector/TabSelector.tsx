@@ -1,16 +1,16 @@
-import { useStateContext } from '../../contexts/state';
+import { TabType, useStateContext } from '../../contexts/state';
 import './TabSelector.css';
 
 const TabSelector = () => {
 	const { setTab, tab } = useStateContext();
+	const tabs: TabType[] = ['images', 'predictions'];
 	return (
 		<div className='TabSelector'>
-			<button className={`tab ${tab === 'images' ? 'active' : ''}`} onClick={() => setTab('images')}>
-				Images
-			</button>
-			<button className={`tab ${tab === 'predictions' ? 'active' : ''}`} onClick={() => setTab('predictions')}>
-				Predictions
-			</button>
+			{tabs.map((item, index) => (
+				<button key={item} tabIndex={index} className={`tab ${tab === item ? 'active' : ''}`} onClick={() => setTab(item)}>
+					{item}
+				</button>
+			))}
 		</div>
 	);
 };

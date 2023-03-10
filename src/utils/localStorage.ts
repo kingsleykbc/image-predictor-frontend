@@ -1,3 +1,6 @@
+/**
+ * READ AND WRITE FROM/TO LOCAL STORAGE
+ */
 import { PredictionsType } from './api';
 
 export type ImageRecordType = {

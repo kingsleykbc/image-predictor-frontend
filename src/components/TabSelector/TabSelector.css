@@ -3,7 +3,7 @@
 }
 
 .TabSelector button {
-	@apply grow bg-white text-black;
+	@apply grow bg-white text-black capitalize;
 }
 
 .TabSelector .active {

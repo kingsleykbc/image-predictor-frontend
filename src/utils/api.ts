@@ -16,6 +16,7 @@ export type PredictionsType = {
 	predictions: PredictionType[];
 };
 
+// Fetch predictions from JSON server
 export const fetchPredictions = async (): Promise<PredictionsType> => {
 	return fetch('http://localhost:3000/predict')
 		.then(res => res.json())
